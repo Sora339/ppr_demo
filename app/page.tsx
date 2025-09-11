@@ -24,6 +24,24 @@ export default function Page() {
         }}>
           ネストしたPPR実験へ →
         </a>
+        <a href="/dynamic-children-static" style={{ 
+          color: '#9333ea', 
+          textDecoration: 'none',
+          padding: '10px 20px',
+          border: '1px solid #9333ea',
+          borderRadius: '4px'
+        }}>
+          動的+静的children実験 →
+        </a>
+        <a href="/dynamic-io-experiment" style={{ 
+          color: '#059669', 
+          textDecoration: 'none',
+          padding: '10px 20px',
+          border: '1px solid #059669',
+          borderRadius: '4px'
+        }}>
+          Dynamic IO実験 →
+        </a>
         <a href="/fully-dynamic" style={{ 
           color: '#1e40af', 
           textDecoration: 'none',
