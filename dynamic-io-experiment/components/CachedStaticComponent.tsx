@@ -8,7 +8,7 @@ export default async function CachedStaticComponent() {
   cacheLife("minutes");
   
   // 静的データの取得をシミュレート
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise(resolve => setTimeout(resolve, 5000));
   
   const staticData = {
     title: "キャッシュされた静的コンポーネント",

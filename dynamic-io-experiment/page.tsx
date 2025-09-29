@@ -55,41 +55,6 @@ export default function DynamicIOExperimentPage() {
         </Suspense>
       </section>
 
-      {/* パターン3: 複数の静的境界 */}
-      <section style={{ marginBottom: '40px' }}>
-        <h2>🏗️ パターン3: 複数の静的境界</h2>
-        <p>複数の"use cache"コンポーネントが独立してキャッシュされます。</p>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-          <CachedStaticComponent />
-          <CachedStaticComponent />
-        </div>
-      </section>
-
-      {/* パターン4: 混在パターン */}
-      <section>
-        <h2>🎯 パターン4: 静的+動的の混在</h2>
-        <p>ページ内で静的コンテンツと動的コンテンツが適切に分離されています。</p>
-        
-        {/* 静的部分 */}
-        <CachedStaticComponent />
-        
-        {/* 動的部分 */}
-        <Suspense fallback={
-          <div style={{
-            padding: '16px',
-            backgroundColor: '#fef3c7',
-            borderRadius: '6px',
-            border: '1px dashed #f59e0b',
-            textAlign: 'center'
-          }}>
-            ⏳ 動的コンテンツ読み込み中...
-          </div>
-        }>
-          <DynamicIOComponent />
-        </Suspense>
-      </section>
-
       {/* 説明セクション */}
       <section style={{
         marginTop: '40px',
