@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 
-export const experimental_ppr = false;
+// export const experimental_ppr = false;
 
 // ① ページ本体は静的シェル（ここではデータ取得しない）
 export default function Page() {

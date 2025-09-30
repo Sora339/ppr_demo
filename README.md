@@ -13,6 +13,16 @@ Next.jsには、「本番ビルドでは、**そのルートが静的にプリ�
 - **動的要素があると判定された場合**：
     - `auto` の fetch も動的に実行され、毎リクエストで走る（SSR 的挙動）
 
-注２：明示的に `cache: 'no-store'` を付けた `fetch` は、それ自体が動的APIsになり、**毎リクエストで取得**（= プリレンダーから外れる）になります。そのため、すべての `fetch` に `cache: 'no-store'` を明示すれば、Cached Componentsを導入したのと同じことになります。
+注２：明示的に `cache: 'no-store'` を付けた `fetch` は、それ自体が動的APIsになり、ビルド時ではなく**毎リクエストで取得**（= プリレンダーから外れる）になります。そのため、すべての `fetch` に `cache: 'no-store'` を明示すれば、Cached Componentsを導入したのと同じことになる。
 
-注３：`cacheComponents` 有効時は、「**毎リクエストで読むデータは Suspense 配下に置け**」というルールがあるため、`cacheComponents`でビルド時に`fetch`が走らなくなったかを確認するには、PPRの構造のページを作って比較する必要があります。
+注３：`cacheComponents` 有効時は、「**毎リクエストで読むデータは Suspense 配下に置け**」というルールがあるため、`cacheComponents`でビルド時に`fetch`が走らなくなったかを確認するには、PPRの構造のページを作って比較する必要がある。
+
+注４：`”use cache”`ディレクティブを用いると、その範囲は静的エクスポートとなり、レンダリング時にfetchが走るようになる。
+
+注５：`cacheComponents` 有効時は、一緒にpprも有効になるが、pprだけ有効にした場合は、{cache: "no-store"}を明示しないと、PPRのページにならない。(Staticになり、fetchがビルド時に走る。)
+
+ただ、`cacheComponents` 有効時は、{cache: "no-store"}を明示しなくても、PPRのページになる。
+
+つまり、`cacheComponents` にはpprだけではできないこととして、{cache: "no-store"}明示のないfetchしか無いページでもPPRにすることができる。
+
+注６：`cacheComponents` 有効時もしくは`ppr: true;`のときは、`export const experimental_ppr = false;`は効かない(`ppr: “incremental”`じゃないといけない)
